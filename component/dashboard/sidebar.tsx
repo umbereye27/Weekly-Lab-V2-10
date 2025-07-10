@@ -1,6 +1,7 @@
 "use client";
 
 import { Home, Plus, User, Settings, LogOut } from "lucide-react";
+import { signOut } from "next-auth/react";
 
 interface SidebarProps {
   activeItem: string;
@@ -64,7 +65,10 @@ const Sidebar = ({ activeItem, onItemClick }: SidebarProps) => {
             <p className="text-slate-400 text-xs">Developer</p>
           </div>
         </div>
-        <button className="w-full flex items-center space-x-3 px-4 py-2 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
+        <button
+          className="w-full flex items-center space-x-3 px-4 py-2 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors"
+          onClick={() => signOut({ redirectTo: "/" })}
+        >
           <LogOut className="w-4 h-4" />
           <span className="text-sm">Logout</span>
         </button>
