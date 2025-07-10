@@ -16,7 +16,7 @@ export const GET = auth(async function GET(req) {
       where: {
         skillId: skillId || undefined,
         skill: {
-          userId: userId, // Ensure tasks belong to the authenticated user
+          userId: userId,
         },
       },
       include: {
@@ -49,7 +49,7 @@ export const POST = auth(async function POST(req) {
   try {
     const userId = req.auth.user?.id;
     const body = await req.json();
-    const { title, description, skillId } = taskSchema.parse(body);
+    const { title, skillId } = taskSchema.parse(body);
 
     // Verify that the skill belongs to the user
     const skill = await prisma.skill.findFirst({
@@ -59,7 +59,6 @@ export const POST = auth(async function POST(req) {
       },
     });
 
-    console.log("Found skill: ", skill);
     if (!skill) {
       return NextResponse.json(
         { error: "Skill not found or unauthorized" },
@@ -70,8 +69,7 @@ export const POST = auth(async function POST(req) {
     const task = await prisma.task.create({
       data: {
         title,
-        description,
-        skillId,
+        skillId: String(skillId),
       },
       include: {
         skill: true,

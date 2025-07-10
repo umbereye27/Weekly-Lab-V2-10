@@ -35,7 +35,7 @@ export const POST = auth(async function POST(req) {
     const reflection = await prisma.reflection.create({
       data: {
         content,
-        skillId,
+        skillId: String(skillId),
         userId: userId,
       },
       include: {

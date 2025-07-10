@@ -1,5 +1,5 @@
-import { AddSKillForm } from "@/component/skills/AddSkill-form";
+import { AddSkillForm } from "@/component/skills/AddSkill-form";
 
 export default function AddSkillsPage() {
-  return <AddSKillForm />;
+  return <AddSkillForm />;
 }

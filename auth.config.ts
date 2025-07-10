@@ -41,7 +41,7 @@ export const authOptions: NextAuthConfig = {
           return null;
         }
 
-        console.log("User authenticated:", user);
+        // console.log("User authenticated:", user);
         return {
           id: user.id,
           email: user.email,

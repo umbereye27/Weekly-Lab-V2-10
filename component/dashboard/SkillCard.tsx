@@ -4,31 +4,32 @@ import { Edit, Trash2, Clock } from "lucide-react";
 
 interface SkillCardProps {
   title: string;
-  category: string;
+  description: string;
   progress: number;
   totalTasks: number;
   completedTasks: number;
   status: "In Progress" | "Completed";
-  lastActivity: string;
+  // lastActivity: string;
   statusColor: string;
+  createdAt: string;
 }
 
 const SkillCard = ({
   title,
-  category,
   progress,
+  description,
   totalTasks,
   completedTasks,
   status,
-  lastActivity,
+  // lastActivity,
   statusColor,
 }: SkillCardProps) => {
   return (
-    <div className="bg-slate-800 rounded-xl p-6 border border-slate-700 hover:border-slate-600 transition-colors">
+    <div className="bg-slate-800 rounded-xl p-6 border border-slate-700 hover:border-slate-600 transition-colors cursor-pointer">
       <div className="flex items-start justify-between mb-4">
         <div>
-          <h3 className="text-white font-semibold text-lg mb-1">{title}</h3>
-          <p className="text-slate-400 text-sm">{category}</p>
+          <h3 className="text-white font-bold text-lg mb-1">{title}</h3>
+          <p className="text-slate-400 text-sm">{description}</p>
         </div>
         <div className="flex items-center space-x-2">
           <button className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 rounded-lg transition-colors">
@@ -43,9 +44,7 @@ const SkillCard = ({
       <div className="mb-4">
         <div className="flex items-center justify-between mb-2">
           <span className="text-slate-400 text-sm">Progress</span>
-          <span className="text-white text-sm">
-            {completedTasks}/{totalTasks} tasks
-          </span>
+          <span className="text-white text-sm">{totalTasks} tasks</span>
         </div>
         <div className="w-full bg-slate-700 rounded-full h-2">
           <div
@@ -58,7 +57,7 @@ const SkillCard = ({
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <Clock className="w-4 h-4 text-slate-400" />
-          <span className="text-slate-400 text-sm">{lastActivity}</span>
+          {/* <span className="text-slate-400 text-sm">{lastActivity}</span> */}
         </div>
         <span
           className={`px-3 py-1 rounded-full text-xs font-medium ${statusColor}`}

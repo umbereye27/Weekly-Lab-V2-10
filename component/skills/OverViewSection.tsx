@@ -1,8 +1,15 @@
 import { CheckCircle, Circle } from "lucide-react";
 import { TaskSection } from "./TaskSection";
 import { ReflectionSection } from "./ReflectionSection";
+import { Reflection, Task } from "@/generated/prisma";
 
-export const OverviewSection = () => {
+export const OverviewSection = ({
+  recievedTasks,
+  recievedReflections,
+}: {
+  recievedTasks: Task[];
+  recievedReflections: Reflection[];
+}) => {
   const skillData = {
     title: "JavaScript Advanced Concepts",
     category: "JS Mastery",
@@ -57,8 +64,8 @@ export const OverviewSection = () => {
   ];
   return (
     <div className="grid grid-cols-1 lg:grid-cols-1 gap-8">
-      <TaskSection />
-      <ReflectionSection />
+      <TaskSection tasks={recievedTasks} />
+      <ReflectionSection reflections={recievedReflections} />
     </div>
   );
 };
