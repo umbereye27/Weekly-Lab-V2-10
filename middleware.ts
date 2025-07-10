@@ -1,20 +1,12 @@
-import { auth } from "@/auth";
-
-export default auth(async function middleware(req) {
+import authConfig from "./auth.config"
+import NextAuth from "next-auth"
+ import { NextRequest } from "next/server"
+// Use only one of the two middleware options below
+// 1. Use middleware directly
+// export const { auth: middleware } = NextAuth(authConfig)
+ 
+// 2. Wrapped middleware option
+const { auth } = NextAuth(authConfig)
+export default auth(async function middleware(req: NextRequest) {
   // Your custom middleware logic goes here
-  console.log("Middleware response ", req.auth);
-  console.log("Request URL:", req.url);
-});
-
-export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api/auth (NextAuth.js routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     */
-    "/((?!api/auth|_next/static|_next/image|favicon.ico).*)",
-  ],
-};
+})
