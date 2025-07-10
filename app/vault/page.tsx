@@ -131,7 +131,7 @@ function DashboardApp() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
               {skills.slice(0, 3).map((skill) => {
-                const completedTasks = skill.completedTasks ?? 0;
+                const completedTasks =  1;
                 const totalTasks = skill._count?.tasks ?? 0;
                 const progress =
                   totalTasks > 0

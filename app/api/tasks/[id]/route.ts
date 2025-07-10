@@ -90,7 +90,7 @@ export const PATCH = auth(async function PATCH(
     }
 
     const body = await req.json();
-    const { title, description, completed, skillId } = taskSchema.parse({
+    const { title,  skillId } = taskSchema.parse({
       ...body,
       skillId: existingTask.skillId, // Preserve the original skillId if not provided
     });
@@ -118,8 +118,6 @@ export const PATCH = auth(async function PATCH(
       },
       data: {
         title,
-        description,
-        completed,
         skillId: skillId || existingTask.skillId,
       },
       include: {
